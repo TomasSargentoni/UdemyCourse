@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diseñador Freelancer </title>
+    <title>Diseñador Freelancer </title>   
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
-        <h1>Tomas Sargentoni Freelancer</h1>
+        <h1 class="titulo"> Tomas Sargentoni <span>Freelancer</span></h1>
+        <h2>Inicio</h2>
     </header>
 
     <nav>
         <a href="#">Inicio</a>
-        <a href="#">Sobre mi</a>
+        <a href="nosotros.html">Sobre mi</a>
         <a href="#">Clientes</a>
         <a href="#">Contacto</a>
     </nav>
 
     
     <section>
-        <h2> Diseño y Desarrollo web Freelancer</h2>
+        <h2 class="titulo"> Diseño y Desarrollo web <span>Freelancer</span></h2>
 
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="88" height="88" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFC107" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -101,6 +104,39 @@
     <section>
         <h2> Contacto </h2>
     </section>
+
+    <form>
+        <fieldset>
+            <legend>Contactanos llenando todos los campos</legend>
+
+            <div>                
+                <label>Nombre</label>
+                <input type="text" placeholder="Tu nombre">
+            </div>
+
+            <div>
+                <label>Telefono</label>
+                <input type="number" placeholder="Tu numero">
+            </div>
+
+            <div>
+                <label>Correo</label>
+                <input type="email" placeholder="Tu Correo">
+            </div>
+
+
+            <div>
+                <label>Mensaje</label>
+                <textarea name="" id="" cols="20" rows="2" placeholder="Tu Mensaje"></textarea>
+           </div>
+
+           <div>
+                <button type="submit"> Enviar</button>
+           </div>
+
+
+        </fieldset>
+    </form>
 
     <footer>
         <p> Todos los derechos reservados. Tomas Sargentoni Freelancer</p>
