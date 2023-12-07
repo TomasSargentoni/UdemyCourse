@@ -35,10 +35,34 @@ body {
 }
 
 .navegacion-principal {
-    padding: 1rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .navegacion-principal a {
     color: var(--blanco);
     text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem 1rem 1rem 1rem;
 }
+
+.navegacion-principal a:hover {
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+@media (min-width: 480px) {
+    h1 {
+
+    }
+}
+
+@media (min-width: 768) {
+    h1 {
+
+    }
+}
+
+
