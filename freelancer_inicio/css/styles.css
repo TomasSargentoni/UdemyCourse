@@ -16,13 +16,13 @@ html{
     scroll-snap-type: y mandatory;
 }
 
-/* Scroll Snap */
+/* Scroll Snap CODIGO
 
 .servicios, .navegacion-principal, .formulario {
     scroll-snap-align: center;
     scroll-snap-stop: always;
 }
-
+*/
 
 *, *:before, *:after {
     box-sizing: inherit;
