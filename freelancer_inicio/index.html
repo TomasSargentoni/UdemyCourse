@@ -113,46 +113,47 @@
 
                 </section>
         </div> <!--.servicios-->
-    </main>
+
 
     <section>
         <h2> Contacto </h2>
+        <form class="formulario">
+            <fieldset>
+                <legend>Contactanos llenando todos los campos</legend>
+
+
+                <div class="contenedor-campos">
+                    <div class="campo">                
+                        <label>Nombre</label>
+                        <input class="input-text" type="text" placeholder="Tu nombre">
+                    </div>
+
+                    <div class="campo">
+                        <label>Telefono</label>
+                        <input class="input-text" type="number" placeholder="Tu numero">
+                    </div>
+
+                    <div class="campo">
+                        <label>Correo</label>
+                        <input class="input-text" type="email" placeholder="Tu Correo">
+                    </div>
+
+
+                    <div class="campo">
+                        <label>Mensaje</label>
+                        <textarea class="input-text" name="" id="" cols="20" rows="2" placeholder="Tu Mensaje"></textarea>
+                    </div>
+                </div> <!--.contenedor-campo-->
+
+                <div class="alinear-derecha flex">
+                        <button class="boton w-sm-100" type="submit"> Enviar</button>
+                </div>
+            </fieldset>
+        </form>
     </section>
+</main>
 
-    <form>
-        <fieldset>
-            <legend>Contactanos llenando todos los campos</legend>
-
-            <div>                
-                <label>Nombre</label>
-                <input type="text" placeholder="Tu nombre">
-            </div>
-
-            <div>
-                <label>Telefono</label>
-                <input type="number" placeholder="Tu numero">
-            </div>
-
-            <div>
-                <label>Correo</label>
-                <input type="email" placeholder="Tu Correo">
-            </div>
-
-
-            <div>
-                <label>Mensaje</label>
-                <textarea name="" id="" cols="20" rows="2" placeholder="Tu Mensaje"></textarea>
-           </div>
-
-           <div>
-                <button type="submit"> Enviar</button>
-           </div>
-
-
-        </fieldset>
-    </form>
-
-    <footer>
+    <footer class="footer">
         <p> Todos los derechos reservados. Tomas Sargentoni Freelancer</p>
     </footer>    
 
