@@ -3,6 +3,7 @@
     --fuenteParrafos: "Open Sans", sans-serif;
 
     --primario: #784D3C;
+    --gris: #e1e1e1;
     --blanco: #FFFFFF;
     --negro: #000000;
 
@@ -142,16 +143,7 @@ img {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.entrada {
+    border-bottom: 1rem solid var(--gris);
+    margin-bottom: 2rem;
+}
