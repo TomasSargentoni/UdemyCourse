@@ -280,3 +280,26 @@ img {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.formulario {
+    background-color: var(--blanco);
+    margin: -5rem auto 0 auto;
+    width: 95%;
+    padding: 5rem;
+}
+
+.campo {
+
+}
+
+.campo__label {
+
+}
+
+.campo__field{
+
+}
+
+.campo__field--textarea{
+
+}
