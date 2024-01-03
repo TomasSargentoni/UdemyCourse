@@ -1,8 +1,14 @@
 // Herramienta para automatizar tareas
 
 const { src, dest, watch } = require("gulp");
+
+// CSS
 const sass = require("gulp-sass")(require("sass"));
 const plumber = require("gulp-plumber");
+
+// Imagenes
+
+const webp = require("gulp-webp");
 
 function css( done ) {
     
@@ -11,6 +17,13 @@ function css( done ) {
         .pipe(sass()) // Compilarlo
         .pipe(dest("build/css")); // Almacenarla en el disco duro
     done(); // Callback que avisa a gulp cuando llegamos al final de la ejecucion
+}
+
+function versionWebp(done){
+
+    src("src/img/**/*.{png,jpg}")
+    
+    done()
 }
 
 function dev(done) {
