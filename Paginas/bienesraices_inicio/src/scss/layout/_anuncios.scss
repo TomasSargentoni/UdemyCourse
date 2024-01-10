@@ -1,6 +1,6 @@
 @include tablet {
     .contenedor-anuncios {
-        @include grid(3, 2rem)
+        @include grid(3, 2rem);
     }
 }
 
@@ -16,15 +16,15 @@
     h3, p {
         margin: 0;
     }
+}
+
+.precio {
+    display: flex;
+    justify-content: center;
+    color: $verde;
+    font-weight: $bold;
+    font-size: 3rem;
     
-    .precio {
-        display: flex;
-        justify-content: center;
-        color: $verde;
-        font-weight: $bold;
-        font-size: 3rem;
-        
-    }
 }
 
 .iconos-caracteristicas {
@@ -49,5 +49,11 @@
 
         }
         
+    }
+}
+
+.resumen-propiedad {
+    .iconos-caracteristicas {
+        margin: -1.5rem 0;
     }
 }
