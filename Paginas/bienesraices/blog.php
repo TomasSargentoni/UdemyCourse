@@ -40,7 +40,7 @@
                     <p>Escrito el: <span>20/10/2021</span> por: <span>Admin</span></p>
 
                     <p>
-                        Maximiza tu espacio en tu hogar con esta guia, aprende a combinar muebles y colores para darle vida a tu espacio
+                        Maximiza el espacio en tu hogar con esta guia, aprende a combinar muebles y colores para darle vida a tu espacio
                     </p>
                 </a>
             </div>
@@ -81,7 +81,7 @@
                     <p>Escrito el: <span>20/10/2021</span> por: <span>Admin</span></p>
 
                     <p>
-                        Maximiza tu espacio en tu hogar con esta guia, aprende a combinar muebles y colores para darle vida a tu espacio
+                        Maximiza el espacio en tu hogar con esta guia, aprende a combinar muebles y colores para darle vida a tu espacio
                     </p>
                 </a>
             </div>
