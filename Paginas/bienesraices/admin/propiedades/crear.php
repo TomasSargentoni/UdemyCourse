@@ -5,6 +5,10 @@
 
     $db = conectarDB();
 
+    // Consultar para obtener los vendedores 
+    $consulta = "SELECT * from vendedores";
+    $resultado = mysqli_query($db,$consulta);
+
     // Arreglo con mensajes de errores
     $errores = [];
 
@@ -130,8 +134,9 @@
 
                 <select name="vendedor">
                     <option value="" disabled selected>-- Seleccione --</option>
-                    <option value="1">Tomas</option>
-                    <option value="2">Karen</option>
+                    <?php while($vendedor = mysqli_fetch_assoc($resultado) ) {?>
+                        <option value=""> <?php echo $vendedor["nombre"] . " " . $vendedor["apellido"];  ?></option>
+                    <?php } ?>
                 </select>
             </fieldset>
 
