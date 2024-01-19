@@ -1,44 +1,30 @@
 <?php
-
-    $id = $_GET["id"];
-    $id = filter_var($id, FILTER_VALIDATE_INT);
-
-    if(!$id) {
-        header("location: /");
-    }
-
     // Importar la conexion
 
     require "includes/config/database.php";
     $db = conectarDB();
 
     // Consultar
-    $query = "SELECT * FROM propiedades WHERE id = $id";
-
+    $query = "SELECT * FROM propiedades LIMIT $limite";
 
     // Obtener resultado
     $resultado = mysqli_query($db, $query);
 
-    if(!$resultado->num_rows) {
-        header("Location: /");
-    }
 
-    $propiedad = mysqli_fetch_assoc($resultado);
-
-    require "includes/funciones.php";
-    incluirTemplate("header");
 ?>
 
+<div class="contenedor-anuncios">
+    <?php while($propiedad = mysqli_fetch_assoc($resultado)) { ?>
+    <div class="anuncio">
 
+        <img loading="lazy" src="/imagenes/<?php echo $propiedad["imagen"]?>" alt="anuncio">
+    
 
-    <main class="contenedor seccion contenido-centrado">
-        <h1><?php echo $propiedad["titulo"] ?></h1>
-
-        <img loading="lazy" src="/imagenes/<?php echo $propiedad["imagen"] ?>" alt="imagen de la propiedad">
-
-        <div class="resumen-propiedad">
+        <div class="contenido-anuncio">
+            <h3><?php echo $propiedad["titulo"] ?> </h3>
+            <p><?php echo $propiedad["descripcion"] ?> </p>
             <p class="precio">$<?php echo $propiedad["precio"] ?></p>
-            
+
             <ul class="iconos-caracteristicas">
                 <li>
                     <img class="icono" loading="lazy" src="build/img/icono_wc.svg" alt="icono wc">
@@ -53,14 +39,18 @@
                     <p><?php echo $propiedad["habitaciones"] ?></p>
                 </li>
             </ul>
+            
+            <a href="anuncio.php?id=<?php echo $propiedad["id"]; ?>" class="boton-amarillo-block">
+                Ver Propiedad
+            </a>
+        </div><!--.contenido-anuncio-->
+    </div><!--.anuncio-->
+    <?php } ?>
+</div><!--.contenedor-anuncios-->
 
-            <p><?php echo $propiedad["descripcion"] ?></p>
+<?php 
 
-        </div>
-    </main>
+    // Cerrar la conexion
 
-<?php
-    mysqli_close($db);
-
-    incluirTemplate("footer");
+    mysqli_close($db)
 ?>
