@@ -1,7 +1,7 @@
 <?php include 'includes/header.php';
 
 // Conectar a la BD con PDO
-$db = new PDO('mysql:host=localhost; dbname=bienesraices_crud', 'root', '');
+$db = new PDO('mysql:host=localhost; dbname=bienesraices_crud', 'root', 'root');
 
 // Creamos el query
 $query = "SELECT titulo, imagen from propiedades";
