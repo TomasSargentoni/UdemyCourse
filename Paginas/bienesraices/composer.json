@@ -1,0 +1,17 @@
+{
+    "name": "tomas/bienesraices",
+    "description": "Creando un proyecto con POO",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Duilio Tomas Sargentoni Audisio",
+            "email": "89033@sistemas.frc.utn.edu.ar"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\" : "./classes"
+        }
+    }
+}
