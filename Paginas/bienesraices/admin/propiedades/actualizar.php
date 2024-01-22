@@ -1,11 +1,10 @@
 <?php
 
     require "../../includes/app.php"; 
-    $auth = estaAutenticado();
 
-    if(!$auth) {
-        header("Location: /");
-    }
+
+    estaAutenticado();
+
 
     // Validar la URL por ID valido
     $id = $_GET["id"];
