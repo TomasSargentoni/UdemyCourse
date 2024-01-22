@@ -3,7 +3,7 @@
         'name' => 'tomas/bienesraices',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'c47e71f8cc3edeb0b6f3d62e1a75a6b02cd8c35d',
+        'reference' => 'a3d30ac9c27bb399370821e26cecc8520182704b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -70,7 +70,7 @@
         'tomas/bienesraices' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'c47e71f8cc3edeb0b6f3d62e1a75a6b02cd8c35d',
+            'reference' => 'a3d30ac9c27bb399370821e26cecc8520182704b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
