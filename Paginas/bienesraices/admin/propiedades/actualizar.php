@@ -3,6 +3,7 @@
     require "../../includes/app.php"; 
 
     use App\Propiedad;
+    use App\Vendedor;
     use Intervention\Image\ImageManagerStatic as Image;
 
     estaAutenticado();
@@ -23,12 +24,7 @@
     // Obtener los datos de la propiedad
     $propiedad = Propiedad::find($id);
 
-
-    // Consultar para obtener los vendedores 
-    $consulta = "SELECT * from vendedores";
-    $resultado = mysqli_query($db,$consulta);
-
-
+    $vendedores = Vendedor::all();
 
     // Arreglo con mensajes de errores
     $errores = Propiedad::getErrores();

@@ -5,11 +5,14 @@
     estaAutenticado();
 
     use App\Propiedad;
+    use App\Vendedor;
 
     $db = conectarDB();
 
     // Implementar un metodo para obtener todas las propiedades
     $propiedades = Propiedad::all();
+    $vendedores = Vendedor::all();
+
 
     //Mostrar mensaje condicional
     $resultado = $_GET["resultado"];

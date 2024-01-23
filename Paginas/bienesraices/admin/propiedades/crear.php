@@ -3,6 +3,7 @@
     require "../../includes/app.php";
 
     use App\Propiedad;
+    use App\Vendedor;
     use Intervention\Image\ImageManagerStatic as Image;
 
     
@@ -11,14 +12,13 @@
 
     // Base de datos
 
-
-    $db = conectarDB();
-
     $propiedad = new Propiedad();
 
-    // Consultar para obtener los vendedores 
-    $consulta = "SELECT * from vendedores";
-    $resultado = mysqli_query($db,$consulta);
+    // Consulta para obtener todos los vendedores
+    $vendedores = Vendedor::all();
+
+  
+
 
     // Arreglo con mensajes de errores
     $errores = Propiedad::getErrores();
@@ -27,9 +27,11 @@
     // Ejecutar el codigo despues de que el usuario envia el formulario 
     if($_SERVER["REQUEST_METHOD"] === 'POST') {
 
+        
         /** Crea una nueva instancia */
         $propiedad = new Propiedad($_POST["propiedad"]);
 
+        
         /** SUBIDA DE ARCHIVOS  */
         // Crear carpeta
 
@@ -63,17 +65,11 @@
 
             // Guarda la imagen en el servidor
             $image->save(CARPETA_IMAGENES . $nombreImagen);
-
+            
             // Guarda en la base de datos
-            $resultado = $propiedad->guardar();
+            
+            $propiedad->guardar();
 
-
-            // Mensaje de exito
-            if ($resultado) {
-                // Redireccionar Al usuario.
-
-                header("location: /admin?resultado=1");
-            }
         }
     }
 
