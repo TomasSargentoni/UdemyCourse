@@ -40,10 +40,21 @@ class Propiedad {
         $this->wc = $args["wc"] ?? "";
         $this->estacionamiento = $args["estacionamiento"] ?? "";
         $this->creado = date('Y/m/d');
-        $this->vendedores_id = $args["vendedores_id"] ?? "";
+        $this->vendedores_id = $args["vendedores_id"] ?? 1;
     }
 
-    function guardar(){
+    public function guardar() {
+        if(isset($this->id)) {
+            // actualizar
+            $this->actualizar();
+        } else {
+            // creando un nuevo registro
+            $this->crear();
+        }
+    }
+
+
+    function crear(){
 
         // Sanitizar los datos
         $atributos = $this->sanitizarAtributos();
@@ -61,6 +72,46 @@ class Propiedad {
             return $resultado;
 
     }
+
+    public function actualizar() {
+        // Sanitizar los datos
+        $atributos = $this->sanitizarAtributos();
+
+        $valores = [];
+        foreach($atributos as $key => $value){
+            $valores[] = "$key='$value'";
+        }
+
+        $query = " UPDATE propiedades SET ";
+        $query .= join(', ', $valores );
+        $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
+        $query .= " LIMIT 1 ";
+
+        $resultado = self::$db->query($query);
+
+        if ($resultado) {
+            // Redireccionar Al usuario.
+            header("location: /admin?resultado=2");
+        }
+    }
+
+    // Elminar un registro
+
+    public function eliminar() {
+        // Eliminar la propiedad
+        $query = "DELETE FROM propiedades WHERE id = " . self::$db->escape_string($this->id). " LIMIT 1";
+
+        $resultado = self::$db->query($query);
+
+        if($resultado) {
+            $this->borrarImagen();
+
+            header("Location: /admin?resultado=3");
+        }
+    }
+
+
+
 
     // Identificar y unir los atributos de la BD
     public function atributos() {
@@ -87,12 +138,27 @@ class Propiedad {
 
     // Subida de archivos 
     public function setImagen($imagen) {
+        // Elimina la imagen previa
+        if (isset($this->id)) {
+            $this->borrarImagen();
+        }
+
         // Asignar al atributo de imagen el nombre de la imagen
         if ($imagen) {
             $this->imagen = $imagen;
         }
     }
     
+    // Elimina el archivo 
+    public function borrarImagen() {
+        // Comprobar si existe el archivo
+        $existeArchivo = file_exists(CARPETA_IMAGENES . $this->imagen);
+        if ($existeArchivo) {
+            unlink(CARPETA_IMAGENES . $this->imagen);
+        }
+    }
+
+
     // Validacion 
     public static function getErrores() {
         return self::$errores;
@@ -137,7 +203,7 @@ class Propiedad {
         return self::$errores;
     }
 
-    // Lista todas las propiedades
+    // Lista todos los registros
     public static function all() {
         $query = "SELECT * FROM propiedades";
 
@@ -146,6 +212,16 @@ class Propiedad {
 
         return $resultado;
     }
+
+    // Busca una registro por su id
+    public static function find($id) {
+        $query = "SELECT * FROM propiedades WHERE id = $id";
+        
+        $resultado = self::consultarSQL($query);
+
+        return $resultado[0];
+    }
+
 
     public static function consultarSQL($query) {
         // Consultar la base de datos
@@ -182,6 +258,17 @@ class Propiedad {
 
         return $objeto;
     }
+
+
+     // Sincronizar el objeto en memoria con los cambios realizados por el usuario
+    public function sincronizar( $args = [] ) {
+        foreach($args as $key => $value) {
+            if(property_exists($this, $key) && !is_null($value))
+            $this->$key = $value;
+        }
+    }   
+
+
 }
 
 
