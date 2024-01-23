@@ -8,7 +8,6 @@
 
         <?php 
 
-        $limite = 10;
         include "includes/templates/anuncios.php";
 
         ?>
