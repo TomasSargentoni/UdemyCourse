@@ -2,11 +2,13 @@
     background-color: darken($grisOscuro, 10);
     
     table {
+        background-color: darken($grisOscuro, 1);
+        padding: 2rem ;
         tr {
             color: $blanco;
         }
     }
-
+ 
     p {
         color: $blanco;
     }
