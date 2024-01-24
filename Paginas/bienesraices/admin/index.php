@@ -16,7 +16,7 @@
 
 
     //Mostrar mensaje condicional
-    $resultado = $_GET["resultado"];
+    $resultado = $_GET["resultado"] ?? null;
 
 
     if($_SERVER["REQUEST_METHOD"] === "POST") {
