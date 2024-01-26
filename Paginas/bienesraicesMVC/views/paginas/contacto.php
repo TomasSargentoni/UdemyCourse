@@ -1,6 +1,12 @@
 <main class="contenedor">
     <h1>Contacto</h1>
 
+    <?php 
+        if($mensaje) { ?>
+            <p class="alerta exito"> <?php echo $mensaje; ?></p>;
+    <?php } ?>
+
+
     <picture>
         <source srcset="build/img/destacada3.webp" type="image/webp">
         <source srcset="build/img/destacada3.jpg" type="image/jpeg">
@@ -14,9 +20,6 @@
             <legend>Informacion Personal</legend>
             <label for="nombre">Nombre</label>
             <input type="text" placeholder="Tu Nombre" id="nombre" name="contacto[nombre]" required>
-
-            <label for="email">E-Mail</label>
-            <input type="email" placeholder="Tu Email" id="email" name="contacto[email]" required>
 
             <label for="mensaje">Mensaje:</label>
             <textarea id="mensaje" name="contacto[mensaje]" required></textarea>
