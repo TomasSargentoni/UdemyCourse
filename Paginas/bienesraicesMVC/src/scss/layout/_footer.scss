@@ -3,6 +3,10 @@
     background-color: $grisOscuro;
     margin-bottom: 0;
 
+    a:hover {
+        color: $verde;
+    }
+
     .contenedor-footer {
         padding-top: calc($separacion / 2)
     }

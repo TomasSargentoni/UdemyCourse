@@ -11,6 +11,9 @@
     background-color: $grisOscuro;
     padding: 1rem 0 3rem 0;
 
+    a:hover{
+        color: $verde;
+    }
 
     &.inicio {
         background-position: center center;
