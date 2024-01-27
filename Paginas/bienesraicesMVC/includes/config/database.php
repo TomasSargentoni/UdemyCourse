@@ -1,13 +1,17 @@
 <?php
 
-function conectarDB() : mysqli {
-    $db = new mysqli("localhost", "root", "root", "bienesraices_crud");
+function conectarDB(): mysqli {
+    $host = getenv("DB_HOST") ?: "localhost";
+    $user = getenv("DB_USER") ?: "root";
+    $password = getenv("DB_PASSWORD") ?: "root";
+    $database = getenv("DB_DATABASE") ?: "bienesraices_crud";
 
-    if(!$db) {
+    $db = new mysqli($host, $user, $password, $database);
+
+    if ($db->connect_error) {
         echo "Error no se pudo conectar";
         exit;
-    }
-    else {
+    } else {
         return $db;
     }
 }
