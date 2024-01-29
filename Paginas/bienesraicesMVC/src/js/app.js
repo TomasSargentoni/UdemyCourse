@@ -1,37 +1,45 @@
 document.addEventListener('DOMContentLoaded', function() {
-
     eventListeners();
-
     darkMode();
+    restoreDarkMode();
 });
 
 function darkMode() {
-
-    const prefiereDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
-
-    // console.log(prefiereDarkMode.matches);
-
-    if (prefiereDarkMode.matches) {
-        document.body.classList.add("dark-mode")
-    }
-    else {
-        document.body.classList.remove("dark-mode")
-    }
-
-    prefiereDarkMode.addEventListener("change", function() {
-        if (prefiereDarkMode.matches) {
-            document.body.classList.add("dark-mode")
-        }
-        else {
-            document.body.classList.remove("dark-mode")
-        } 
-    })
-
     const botonDarkMode = document.querySelector(".dark-mode-boton");
 
     botonDarkMode.addEventListener("click", function() {
-        document.body.classList.toggle("dark-mode")
+        document.body.classList.toggle("dark-mode");
+        saveDarkModeState(); // Guarda el estado del modo oscuro al cambiarlo
     });
+}
+
+function restoreDarkMode() {
+    const isDarkModeEnabled = getCookie('darkMode') === 'true' || localStorage.getItem('darkMode') === 'true';
+
+    if (isDarkModeEnabled) {
+        document.body.classList.add('dark-mode');
+    }
+}
+
+function saveDarkModeState() {
+    const isDarkModeEnabled = document.body.classList.contains('dark-mode');
+    setCookie('darkMode', isDarkModeEnabled);
+    localStorage.setItem('darkMode', isDarkModeEnabled);
+}
+
+function setCookie(name, value) {
+    document.cookie = `${name}=${value}; SameSite=None; Secure; path=/`;
+}
+
+function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for (const cookie of cookies) {
+        const [cookieName, cookieValue] = cookie.trim().split('=');
+        if (cookieName === name) {
+            return cookieValue;
+        }
+    }
+    return null;
 }
 
 function eventListeners() {
@@ -41,9 +49,7 @@ function eventListeners() {
 
     // Muestra campos Condicionales
     const metodoContacto = document.querySelectorAll('input[name="contacto[contacto]"]');
-    metodoContacto.forEach(input => input.addEventListener("click", mostrarMetodosContacto))
-
-    
+    metodoContacto.forEach(input => input.addEventListener("click", mostrarMetodosContacto));
 }
 
 function navegacionResponsive() {
@@ -59,7 +65,6 @@ function navegacionResponsive() {
 
 function mostrarMetodosContacto(e) {
     const contactoDiv = document.querySelector("#contacto");
-
 
     if(e.target.value === "telefono") {
         contactoDiv.innerHTML = `
@@ -79,5 +84,5 @@ function mostrarMetodosContacto(e) {
         <label for="email">E-Mail</label>
         <input type="email" placeholder="Tu Email" id="email" name="contacto[email]" required>
         `;
-}
+    }
 }
