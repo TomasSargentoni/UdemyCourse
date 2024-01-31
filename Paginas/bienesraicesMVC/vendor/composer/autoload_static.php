@@ -4,12 +4,10 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7398bab65d8997ec352ca53fbe761d80
+class ComposerStaticInitc2a7ecb786b9f6533815a28ca89db779
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -21,12 +19,10 @@ class ComposerStaticInit7398bab65d8997ec352ca53fbe761d80
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
-            'SendinBlue\\Client\\' => 18,
         ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
-            'Psr\\Http\\Client\\' => 16,
             'PhpOption\\' => 10,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
@@ -42,8 +38,6 @@ class ComposerStaticInit7398bab65d8997ec352ca53fbe761d80
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
-            'GuzzleHttp\\Promise\\' => 19,
-            'GuzzleHttp\\' => 11,
             'GrahamCampbell\\ResultType\\' => 26,
         ),
         'D' => 
@@ -53,10 +47,6 @@ class ComposerStaticInit7398bab65d8997ec352ca53fbe761d80
         'C' => 
         array (
             'Controllers\\' => 12,
-        ),
-        'B' => 
-        array (
-            'Brevo\\Client\\' => 13,
         ),
     );
 
@@ -73,18 +63,10 @@ class ComposerStaticInit7398bab65d8997ec352ca53fbe761d80
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'SendinBlue\\Client\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sendinblue/api-v3-sdk/lib',
-        ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'Psr\\Http\\Client\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-client/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'PhpOption\\' => 
         array (
@@ -110,14 +92,6 @@ class ComposerStaticInit7398bab65d8997ec352ca53fbe761d80
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
-        'GuzzleHttp\\Promise\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
-        ),
-        'GuzzleHttp\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
-        ),
         'GrahamCampbell\\ResultType\\' => 
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
@@ -129,10 +103,6 @@ class ComposerStaticInit7398bab65d8997ec352ca53fbe761d80
         'Controllers\\' => 
         array (
             0 => __DIR__ . '/../..' . '/controllers',
-        ),
-        'Brevo\\Client\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/getbrevo/brevo-php/lib',
         ),
     );
 
@@ -148,9 +118,9 @@ class ComposerStaticInit7398bab65d8997ec352ca53fbe761d80
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7398bab65d8997ec352ca53fbe761d80::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7398bab65d8997ec352ca53fbe761d80::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit7398bab65d8997ec352ca53fbe761d80::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc2a7ecb786b9f6533815a28ca89db779::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc2a7ecb786b9f6533815a28ca89db779::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc2a7ecb786b9f6533815a28ca89db779::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -69,6 +69,7 @@ class PaginasController {
             $mail->Port = $_ENV["EMAIL_PORT"];
             $mail->Username = $_ENV["EMAIL_USER"];
             $mail->Password = $_ENV["EMAIL_PASS"];
+            $mail->SMTPSecure = 'tls';
 
             // Configurar el contenido del mail
             $mail->setFrom("admin@bienesraices.com");
