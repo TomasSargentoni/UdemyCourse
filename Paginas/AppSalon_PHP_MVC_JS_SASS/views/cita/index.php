@@ -21,13 +21,15 @@
         <form class="formulario">
             <div class="campo">
                 <label for="nombre">Nombre</label>
-                <input id="nombre" type="text" placeholder="Tu Nombre" value= <?php echo $nombre; ?> disabled >
+                <input id="nombre" type="text" placeholder="Tu Nombre" value= <?php echo($nombre); ?> disabled >
             </div>
 
             <div class="campo">
                 <label for="fecha">Fecha</label>
-                <input id="fecha" type="date">
+                <input id="fecha" type="date" min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
             </div>
+
+            
 
             <div class="campo">
                 <label for="hora">Hora</label>
@@ -36,7 +38,7 @@
 
         </form>
     </div>
-    <div id="paso-3" class="seccion">
+    <div id="paso-3" class="seccion contenido-resumen">
         <h2>Resumen</h2>
         <p class="text-center">Verifica que la informacion sea correcta</p>
     </div>
