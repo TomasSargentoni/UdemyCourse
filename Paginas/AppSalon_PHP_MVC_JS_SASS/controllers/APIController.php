@@ -38,4 +38,23 @@ class APIController {
 
         echo json_encode(["resultado" => $resultado]);
     }
+
+    public static function eliminar() {
+        
+        if($_SERVER["REQUEST_METHOD"] === "POST") {
+
+            $id = $_POST["id"];
+
+            if(filter_var($id, FILTER_VALIDATE_INT)) {
+                $cita = Cita::find($id);
+            }
+
+            if ($cita) {
+            $cita->eliminar();
+            }
+            
+            header("Location:" . $_SERVER["HTTP_REFERER"]);
+            
+        }
+    }
 }
