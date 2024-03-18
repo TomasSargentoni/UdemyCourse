@@ -15,8 +15,25 @@ class Usuario extends ActiveRecord {
         $this->password = $args["password"] ?? "";
         $this->password2 = $args["password2"] ?? "";
         $this->token = $args["token"] ?? "";
-        $this->confirmado = $args["confirmado"] ?? "";
+        $this->confirmado = $args["confirmado"] ?? 0;
     }
+
+
+    // Validar el login de Usuarios
+    public function validarLogin() { 
+        if(!$this->email) {
+            self::$alertas["error"][] = "El Email del Usuario es Obligatorio";
+        }
+        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            self::$alertas["error"][] = "Email no valido";    
+        }
+        if(!$this->password) {
+            self::$alertas["error"][] = "El Password no puede ir vacio";
+        }
+
+        return self::$alertas;
+    }
+
 
     // Validacion para cuentas nuevas
     public function validarNuevaCuenta() {
@@ -42,6 +59,33 @@ class Usuario extends ActiveRecord {
 
         return self::$alertas;
     }
+
+    // Valida un email
+    public function validarEmail() {
+        if(!$this->email) {
+            self::$alertas["error"][] = "El Email es Obligatorio";
+
+        }
+        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            self::$alertas["error"][] = "Email no valido";    
+        }
+
+        return self::$alertas;
+    }
+
+
+    // Valida el Password
+    public function validarPassword() {
+        if(!$this->password) {
+            self::$alertas["error"][] = "El Password no puede ir vacio";
+        }
+
+        if(strlen($this->password) < 6 ) {
+            self::$alertas["error"][] = "El Password debe contener al menos 6 caracteres";
+        }
+        return self::$alertas;
+    }
+
 
     // Hashea el password
     public function hashPassword() {
