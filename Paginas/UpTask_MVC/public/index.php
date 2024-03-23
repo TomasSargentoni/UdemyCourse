@@ -37,7 +37,7 @@ $router->get("/proyecto", [DashBoardController::class, "proyecto"]);
 $router->get("/perfil", [DashBoardController::class, "perfil"]);
 
 // API para las tareas
-$router->get("/api/tarea", [TareaController::class, "index"]);
+$router->get("/api/tareas", [TareaController::class, "index"]);
 $router->post("/api/tarea", [TareaController::class, "crear"]);
 $router->post("/api/tarea/actualizar", [TareaController::class, "actualizar"]);
 $router->post("/api/tarea/eliminar", [TareaController::class, "eliminar"]);
