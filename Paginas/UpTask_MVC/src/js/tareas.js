@@ -1,7 +1,7 @@
 (function() {
 
     obtenerTareas();
-
+    let tareas = [];
 
     // Boton para mostrar el Modal de Agregar Tarea
     const nuevaTareaBtn = document.querySelector("#agregar-tarea");
@@ -15,15 +15,16 @@
             const respuesta = await fetch(url);
             const resultado = await respuesta.json();
 
-            const { tareas } = resultado;
-            mostrarTareas(tareas);
+            tareas = resultado.tareas;
+            mostrarTareas();
 
         } catch (error) {
             console.log(error)
         }
     }
 
-    function mostrarTareas(tareas) {
+    function mostrarTareas() {
+        limpiarTareas();
         if(tareas.length === 0) {
             const contenedorTareas = document.querySelector("#listado-tareas");
 
@@ -57,6 +58,9 @@
             btnEstadoTarea.classList.add(`${estados[tarea.estado].toLowerCase()}`)
             btnEstadoTarea.textContent = estados[tarea.estado];
             btnEstadoTarea.dataset.estadoTarea = tarea.estado;
+            btnEstadoTarea.onclick = function() {
+                cambiarEstadoTarea({...tarea});
+            }
 
             const btnEliminarTarea = document.createElement("BUTTON");
             btnEliminarTarea.classList.add("eliminar-tarea");
@@ -173,7 +177,18 @@
                 setTimeout(() => {
                     modal.remove();
                 }, 3000);
-                
+
+                // Agregar el objeto de tarea al global de tareas
+                const tareaObj = {
+                    id: String(resultado.id),
+                    nombre: tarea,
+                    estado: "0",
+                    proyectoId: resultado.proyectoId
+                }
+
+                tareas = [...tareas,tareaObj];
+                mostrarTareas();
+
             }
 
         } catch (error) {
@@ -181,10 +196,42 @@
         }
     }
 
+    function cambiarEstadoTarea(tarea) {
+
+        const nuevoEstado = tarea.estado === "1" ? "0" : "1";
+        tarea.estado = nuevoEstado;
+        actualizarTarea(tarea);
+    }
+
+    async function actualizarTarea(tarea) {
+        const {estado,id, nombre, proyectoId} = tarea;
+
+        const datos = new FormData();
+        datos.append("id", id)
+        datos.append("nombre", nombre)
+        datos.append("estado", estado)
+        datos.append("proyectoId", obtenerProyecto())
+
+        try {
+            const url = "http://localhost:3000/api/tarea/actualizar";
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
     function obtenerProyecto() {
         const proyectoParams = new URLSearchParams(window.location.search);
         const proyecto = Object.fromEntries(proyectoParams.entries());
         return proyecto.id;
+    }
+
+    function limpiarTareas() {
+        const listadoTareas = document.querySelector("#listado-tareas");
+        
+        while(listadoTareas.firstChild) {
+            listadoTareas.removeChild(listadoTareas.firstChild);
+        }
     }
 
 })();
