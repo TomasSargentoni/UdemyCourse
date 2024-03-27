@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Model\Proyecto;
+use Model\Usuario;
 use MVC\Router;
 
 
@@ -77,11 +78,54 @@ class DashBoardController {
     }
  
     public static function perfil(Router $router) {
-
         session_start();
+        isAuth();
+        $alertas = [];
+
+        $usuario = Usuario::find($_SESSION["id"]);
+
+        if($_SERVER["REQUEST_METHOD"] === "POST") {
+            
+            $usuario->sincronizar($_POST);
+
+            $alertas = $usuario->validar_perfil();
+
+            if(empty($alertas)) {
+
+                $existeUsuario = Usuario::where("email",$usuario->email);
+
+                if($existeUsuario && $existeUsuario->id !== $usuario->id ) {
+                    // Mensaje de error
+                    $usuario::setAlerta("error", "Email no valido, ya pertenece a otra cuenta");
+                    $alertas = $usuario->getAlertas();
+                } else {
+                    // Guardar el usuario
+                    $usuario->guardar();
+
+                    $usuario::setAlerta("exito", "Guardado Correctamente");
+                    $alertas = $usuario->getAlertas();
+
+                    // Asignar el nombre nuevo a la barra
+                    $_SESSION["nombre"] = $usuario->nombre;
+                }
+            }
+        }
 
         $router->render("dashboard/perfil", [
-            "titulo" => "Perfil"
+            "titulo" => "Perfil",
+            "usuario" => $usuario,
+            "alertas" => $alertas
+        ]);
+    }
+
+    public static function cambiar_password(Router $router) {
+        session_start();
+        isAuth();
+        $alertas = [];
+
+        $router->render("dashboard/cambiar-password", [
+            "titulo" => "Cambiar Password",
+            "alertas" => $alertas
         ]);
     }
 }
