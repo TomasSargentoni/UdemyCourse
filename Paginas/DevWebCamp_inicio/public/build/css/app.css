@@ -363,6 +363,16 @@ h3 {
   display: flex;
   flex-direction: column;
 }
+.formulario__fieldset {
+  border: none;
+  margin-top: 1rem;
+  padding: 0;
+}
+.formulario__legend {
+  color: #64748B;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
 .formulario__campo {
   display: flex;
   flex-direction: column;
@@ -378,6 +388,9 @@ h3 {
   padding: 1rem;
   border: 1px solid #b1c7dd;
   border-radius: 0.5rem;
+}
+.formulario__input--file {
+  border: none;
 }
 .formulario__submit {
   background-color: #007df4;
@@ -397,6 +410,9 @@ h3 {
 .formulario__submit:hover {
   background-color: #0063c1;
   cursor: pointer;
+}
+.formulario__submit--registrar {
+  width: 100%;
 }
 
 .acciones {
@@ -761,5 +777,46 @@ h3 {
   .dashboard__contenido {
     padding: 1rem 5rem 3rem 5rem;
   }
+}
+@media (min-width: 768px) {
+  .dashboard__contenedor-boton {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5rem;
+  }
+}
+.dashboard__boton {
+  background-color: #007df4;
+  padding: 1.5rem 4rem;
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+.dashboard__boton:hover {
+  background-color: #0063c1;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .dashboard__boton {
+    width: auto;
+  }
+}
+.dashboard__contenedor, .dashboard__formulario {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  background-color: #FFFFFF;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.dashboard__formulario {
+  width: min(95%, 80rem);
+  margin: 0 auto;
 }
 /*# sourceMappingURL=app.css.map */
