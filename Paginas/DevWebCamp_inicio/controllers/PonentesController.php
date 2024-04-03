@@ -11,7 +11,9 @@ class PonentesController {
     public static function index(Router $router) {
         $ponentes = Ponente::all();
 
-
+        if(!is_admin()) {
+            header("Location: /login");
+        }
 
         $router->render("admin/ponentes/index", [
             "titulo" => "Ponentes / Conferencistas",
@@ -20,10 +22,20 @@ class PonentesController {
     }
 
     public static function crear(Router $router) {
+
+        if(!is_admin()) {
+            header("Location: /login");
+        }
+
         $alertas = [];
         $ponente = new Ponente;
 
         if($_SERVER["REQUEST_METHOD"] ===  "POST") {
+
+            if(!is_admin()) {
+                header("Location: /login");
+            }
+
             // Leer imagen
             if(!empty($_FILES["imagen"]["tmp_name"])) {
                 
@@ -78,6 +90,10 @@ class PonentesController {
 
 
     public static function editar(Router $router) {
+
+        if(!is_admin()) {
+            header("Location: /login");
+        }
      
         $alertas = [];
         // Validar el ID
@@ -100,6 +116,11 @@ class PonentesController {
         $redes = json_decode($ponente->redes);
 
         if($_SERVER["REQUEST_METHOD"] === "POST") {
+
+            if(!is_admin()) {
+                header("Location: /login");
+            }
+
             if(!empty($_FILES['imagen']['tmp_name'])) {
                 
                 $carpeta_imagenes = '../public/img/speakers';
@@ -124,6 +145,8 @@ class PonentesController {
             }
 
             $_POST["redes"] = json_encode($_POST["redes"], JSON_UNESCAPED_SLASHES);
+
+            
             $ponente->sincronizar($_POST);
 
             $alertas = $ponente->validar();
@@ -144,7 +167,7 @@ class PonentesController {
         }
 
 
-        $router->render("admin/ponentes/crear", [
+        $router->render("admin/ponentes/editar", [
             "titulo" => "Actualizar Ponente",
             "alertas" => $alertas,
             "ponente" => $ponente,
@@ -153,6 +176,10 @@ class PonentesController {
     }
 
     public static function eliminar() {
+
+        if(!is_admin()) {
+            header("Location: /login");
+        }
 
         if($_SERVER["REQUEST_METHOD"] === "POST") {
 
