@@ -52,7 +52,7 @@ class Paginacion {
         $html = "";
         for($i = 1; $i <= $this->total_paginas(); $i++ ) {
             if($i === $this->pagina_actual) {
-                $html .= "<span class=''paginacion__enlace paginacion__enlace--actual>{$i}</span>";
+                $html .= "<span class='paginacion__enlace paginacion__enlace--actual'>{$i}</span>";
             } else {
                 $html .= "<a class='paginacion__enlace paginacion__enlace--numero' href='?page={$i}'>{$i}</a>";
             }
