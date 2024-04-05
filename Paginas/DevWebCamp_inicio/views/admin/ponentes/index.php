@@ -50,3 +50,7 @@
 
     <?php } ?>
 </div>
+
+<?php
+    echo $paginacion;
+?>
