@@ -6,7 +6,7 @@
         </nav>
 
         <div class="header__contenido">
-            <a href="">
+            <a href="/">
                 <h1 class="header__logo">&#60;DevWebcamp /></h1>
             </a>
 
