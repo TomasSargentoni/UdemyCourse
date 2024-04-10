@@ -11,7 +11,7 @@
         obtenerPonentes();
         ponentesInput.addEventListener("input", buscarPonentes)
 
-        if(ponenteHidden) {
+        if(ponenteHidden.value) {
             (async() => {
                 const ponente = await obtenerPonente(ponenteHidden.value)
 
