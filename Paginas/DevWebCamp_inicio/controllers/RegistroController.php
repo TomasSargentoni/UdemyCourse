@@ -11,6 +11,7 @@ use Model\Ponente;
 use Model\Usuario;
 use Model\Registro;
 use Model\Categoria;
+use Model\EventosRegistros;
 use Model\Regalo;
 
 class RegistroController {
@@ -50,12 +51,12 @@ class RegistroController {
             $token = substr( md5(uniqid( rand(), true )), 0, 8);
 
             // Crear registro
-            $datos = array(
+            $datos = [
                 "paquete_id" => 3,
                 "pago_id" => "",
                 "token" => $token,
                 "usuario_id" => $_SESSION["id"]
-            );
+            ];
 
             $registro = new Registro($datos);
             $resultado = $registro->guardar();
@@ -166,6 +167,67 @@ class RegistroController {
         }
 
         $regalos = Regalo::all("ASC");
+
+        // Manejando el registro mediante $_POST
+        if($_SERVER["REQUEST_METHOD"] === "POST") {
+
+            // Revisar que el usuario este autenticado
+            if(!is_Auth()) {
+                header("Location: /");
+            }
+
+            $eventos = explode(",", $_POST["eventos"]);
+            if(empty($eventos)) {
+                echo json_encode(["resultado" => false]);
+                return;
+            }
+
+            // Obtener el registro de usuario
+            $registro = Registro::where("usuario_id", $_SESSION["id"]);
+            if(!isset($registro) || $registro->paquete_id !== "1") {
+                echo json_encode(["resultado" => false]);
+                return;
+            }
+
+            $eventos_array = [];
+
+            // Validar la disponiblidad de los eventos seleccionados
+            foreach($eventos as $evento_id) {
+                $evento = Evento::find($evento_id);
+
+                // Comprobar que el evento exista
+                if(!isset($evento) || $evento->disponibles === "0") {
+                    echo json_encode(["resultado" => false]);
+                    return;
+                }
+
+                $eventos_array[] = $evento;   
+            }
+
+            foreach($eventos_array as $evento) {
+                $evento->disponibles -= 1;
+                $evento->guardar();
+
+                // Almacenar el registro
+                $datos = [
+                    "evento_id" => (int) $evento->id,
+                    "registro_id" => (int) $registro->id
+                ];
+
+                $registro_usuario = new EventosRegistros($datos);
+                $registro_usuario->guardar();
+            }
+
+            // Almacenar el regalo
+            $registro->sincronizar(["regalo_id" => $_POST["regalo_id"]]);
+            $resultado = $registro->guardar();
+
+            if($resultado) {
+                echo json_encode(["resultado" => $resultado]);
+            }
+
+            return;
+        }
 
         $router->render("registro/conferencias", [
             "titulo" => "Elige Workshops y Conferencias",
