@@ -49,11 +49,13 @@
                     <source srcset="build/img/foto_egreso.webp" type="image/webp">
                     <img loading="lazy" width="200" height="300" src="build/img/foto_egreso.jpg" alt="Imagen DevWebcamp">
                 </picture>
-                <p>Hola! Soy Tomas Sargentoni y este es mi Blog Personal!</p>
             </div>
             <div class="header__informacion">
                 <h2 class="header__sobreMi">Un Poco Sobre Mi</h2>
-                <p >Actualmente me encuentro cursando el 4to año de mi carrera (Ingenieria en Sistemas), voy a Universidad Tecnologica Nacional (UTN) </p>
+                <p>¡Hola! Soy Tomas Sargentoni, un estudiante avanzado de Ingeniería en Sistemas en la Universidad Tecnológica Nacional, en la ciudad de Córdoba Capital.
+                Mi camino en la informática comenzó con mi interés en entender cómo funcionan los sistemas y cómo podemos mejorar su rendimiento y seguridad. En la universidad, he tenido la oportunidad de profundizar mis conocimientos y habilidades técnicas, siempre buscando aprender y aplicar nuevos conceptos.
+                Además de mi formación académica, disfruto complementar mis estudios con cursos especializados que me permiten estar al tanto de las últimas tendencias en desarrollo de software y seguridad informática. Creo firmemente en la importancia de la educación continua y la especialización en un campo tan dinámico como el nuestro.
+                En este blog, compartiré mi experiencia y conocimientos, así como también reflexiones y aprendizajes sobre el mundo de la ingeniería en sistemas. ¡Acompáñame en este viaje de aprendizaje y descubrimiento tecnológico!</p>
             </div>
         </div>
     </div>

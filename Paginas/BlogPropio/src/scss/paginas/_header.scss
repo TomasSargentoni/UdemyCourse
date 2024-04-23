@@ -4,18 +4,23 @@
 
 .barra {
 
+    display: block;
+    border-bottom: solid 10px v.$blanco;
+
     &.bg-grisOscuro {
 
         background-color: v.$grisOscuro;
     }
 
-    max-height: 40rem;
+    
+    max-width: auto;
     
     &__contenedor {
         @include m.contenedor-hg;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        
     }
 
     &__principal {
@@ -26,8 +31,9 @@
         
 
         img {
-            margin: 2rem 0rem 2rem 1rem;
-            max-width: 15rem
+            margin: 0;
+            max-width: 20rem;
+            margin: 0;
         }
 
         nav {
@@ -68,44 +74,52 @@
 .header {
     
     background-color: v.$azul;
+    padding-bottom: 14rem;
 
     &__contenedor {
         @include m.contenedor-hg;
     }
 
     &__perfil {
-        display: flex;
+        display: grid;
+        grid-template-columns: 25% 75%;
+        
     }
 
     &__imagen {
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        
         img {
-            margin: 4rem 0rem 2rem 1rem;
-            max-width: 25rem;
+            margin: 16rem 0rem 2rem -2rem;
+            max-width: 30rem;
             border-radius: 40%;
         }
 
         color: v.$blanco;
         margin-top: 1rem;
-        font-size: 2.4rem;
-        p {
-        }
+        font-size: 2rem;
+
     }
 
     &__informacion {
         color: v.$blanco;
+        line-height: 1.5;
+        margin-top: 10rem;
+
+        p {
+            font-size: 2.3rem;
+        }
     }
 
     &__sobreMi {
-        @include m.texto-degradado(v.$blanco, v.$amarillo);
-        font-family: "Jersey 20", sans-serif;
+        color: v.$amarillo;
+        font-family: "Oswald", sans-serif;
         font-weight: 400;
-        font-size: 10rem;
+        font-size: 6rem;
         font-style: normal;
-        text-align: center;
+        text-align: left;
         
     }
 }
