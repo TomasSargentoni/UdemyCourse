@@ -1,0 +1,66 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+
+.footer {
+
+   
+
+    &.bg-grisOscuro {
+        background-color: v.$grisOscuro;
+
+    }
+    
+    &__contenedor {
+        @include m.contenedor-hg;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+
+    &__principal {
+
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        
+
+        img {
+            margin: 100rem 0rem 2rem 1rem;
+            max-width: 35rem
+        }
+
+        nav {
+
+            .menu--principal--activo {
+                color: v.$amarillo;
+            }
+            a {
+                @include m.enlace;
+                font-size: 2rem;
+                font-weight: 900;
+                padding: 1rem;
+               
+            }
+
+        }
+        
+        
+        
+        
+        
+    }
+
+    .barra__menu--redes {
+
+        @include m.menu-social(v.$blanco, 3.3rem);
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 4rem 0;
+        @include m.tablet {
+            justify-content: flex-end;
+        }
+    }
+}
